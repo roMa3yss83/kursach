@@ -1,0 +1,24 @@
+.lox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.lox form {
+    display: flex;
+    flex-direction: column;
+}
+.lox form input {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.lox form button {
+    padding: 5px;
+
+}
+.lox h3 {
+    margin-bottom: 20px;
+}
+#knopka_rega {
+    margin-right: 10px;
+}

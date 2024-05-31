@@ -1,0 +1,27 @@
+.qkkd {
+    background-image: url('https://img.freepik.com/free-photo/process-creating-modern-fence-with-orange-sparks_7502-9314.jpg?t=st=1710839160~exp=1710842760~hmac=51eb46d319adc0a69afa6d1b8e8a1c1660c65f57b9b5d4d43aef5920b0510f4f&w=1380');
+    background-size: cover; /* размер одного повторяющегося изображения */
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+#zagolovok {
+    color: rgb(255, 255, 255);
+}
+#pole_main {
+    display: flex;
+}
+#knopka_main {
+    margin-left: 10px;
+}
+#main_main {
+    background-color: rgba(69, 69, 69, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    border-color: rgb(255, 255, 255);
+    border-width: 2px;
+    border-style: solid;
+}
+#knopka_rega {
+    margin-right: 10px;
+}
