@@ -1,65 +1,9 @@
+<?php
+$site_title = 'Список вакансий';
+$css_file = 'css/spisok-vakansij.css';
 
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Список вакансий</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="css/spisok-vakansij.css" />
-  </head>
-  <body class="">
-    <header
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
-    >
-      <div class="col-md-3 mb-2 mb-md-0">
-        <a
-          href="/"
-          class="d-inline-flex link-body-emphasis text-decoration-none"
-        >
-          <svg
-            class="bi"
-            width="40"
-            height="32"
-            role="img"
-            aria-label="Bootstrap"
-          >
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-          <img
-            class="bi"
-            height="32"
-            src="images/logo.png"
-            alt=""
-          />
-        </a>
-      </div>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0й2ц">
-        <li><a href="#" class="nav-link px-2">Главная</a></li>
-        <li><a href="#" class="nav-link px-2">Новости</a></li>
-        <li><a href="#" class="nav-link px-2">Профиль</a></li>
-        <li><a href="#" class="nav-link px-2">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2">О нас</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Вход</button>
-        <button type="button" id="knopka_rega" class="btn btn-warning">
-          Регистрация
-        </button>
-      </div>
-    </header>
+include("blocks/header.php");
+?>
 
     <main class="container jaskdlf">
       <div class="row mb-2">
@@ -136,27 +80,4 @@
       </div>
     </main>
 
-    <div class="container">
-      <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">Главная</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">Новости</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">Профиль</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">О нас</a>
-          </li>
-        </ul>
-        <p class="text-center text-body-secondary">© 2024 Вакансии, Inc</p>
-      </footer>
-    </div>
-  </body>
-</html>
+<?php include("blocks/footer.php") ?>
