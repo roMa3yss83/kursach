@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $site_title = 'Регистрация аккаунта';
 $css_file = 'css/vhod.css';
 
@@ -7,9 +9,9 @@ include("blocks/header.php");
 
     <main>
       <div class="container lox">
-        <p style="color: red;">{{ error }}</p>
+        <p style="color: red;"><?php echo $_SESSION['error_reg'] ?></p>
         <h3>Зарегестрируйтесь для использования нашего сайта на 100%</h3>
-        <form action="reg-post.php" method="POST" class="w-50" enctype="multipart/form-data">
+        <form action="scripts/reg-post.php" method="POST" class="w-50" enctype="multipart/form-data">
           <input type="text" name="name" class="form-control" placeholder="Имя" />
           <input type="text" name="surname" class="form-control" placeholder="Фамилия" />
           <input type="text" name="patronymic" class="form-control" placeholder="Отчество" />
@@ -42,4 +44,8 @@ include("blocks/header.php");
       </div>
     </main>
 
-<?php include("blocks/footer.php") ?>
+<?php
+ include("blocks/footer.php");
+ 
+ session_destroy();
+ ?>

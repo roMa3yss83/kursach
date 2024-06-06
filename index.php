@@ -1,9 +1,20 @@
 <?php
+session_start();
+
 $site_title = 'Главная';
 $css_file = 'css/style.css';
 
 include("blocks/header.php");
 ?>
+
+<div class="container">
+  <!--Сообщение о регистрации-->
+  <?php if(isset($_SESSION['success'])) { ?>
+  <div class="alert alert-success" role="alert">
+      <?php echo $_SESSION['success']; ?>
+  </div>
+  <?php } ?>
+</div>
 
     <div class="qkkd">
       <div class="container">
@@ -142,4 +153,8 @@ include("blocks/header.php");
       </div>
     </div>
 
-<?php include("blocks/footer.php") ?>
+<?php
+  include("blocks/footer.php");
+
+  session_destroy();
+?>

@@ -1,6 +1,6 @@
 <?php
-$site_title = 'Главная';
-$css_file = 'css/Профиль - ФИО.css';
+$site_title = 'Профиль';
+$css_file = 'css/profile.css';
 
 include("blocks/header.php");
 ?>

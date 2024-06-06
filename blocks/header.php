@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="ru">
   <head>
@@ -52,17 +55,26 @@
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="/" class="nav-link px-2">Главная</a></li>
         <li><a href="#" class="nav-link px-2">Новости</a></li>
-        <li><a href="profile.php" class="nav-link px-2">Профиль</a></li>
+
+        <!-- Если куки пользователя не найден, то ссылка на страницу самого пользователя не выйдет -->
+        <?php if (isset($_COOKIE['user'])) { ?>
+          <li><a href="profile.php" class="nav-link px-2">Профиль</a></li>
+        <?php } ?>
+
         <li><a href="#" class="nav-link px-2">FAQs</a></li>
         <li><a href="#" class="nav-link px-2">О нас</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
-        <!--<button type="button" class="btn btn-outline-primary me-2">Вход</button>-->
-        <a class="btn btn-outline-primary me-2" href="vhod.php">Вход</a>
-        <!--<button type="button" id="knopka_rega" class="btn btn-warning">
-          Регистрация
-        </button>-->
-        <a href="registration.php" id="knopka_rega" class="btn btn-warning">Регистрация</a>
+
+        <?php if (isset($_COOKIE['user'])) { ?>
+          <a class="btn btn-outline-primary me-2" href="exit.php">Выход</a>
+        <?php } ?>
+
+        <?php if (is_null($_COOKIE['user'])) { ?>
+          <a class="btn btn-outline-primary me-2" href="vhod.php">Вход</a>
+          <a href="registration.php" id="knopka_rega" class="btn btn-warning">Регистрация</a>
+        <?php } ?>
+
       </div>
     </header>

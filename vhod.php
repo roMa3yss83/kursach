@@ -7,14 +7,15 @@ include("blocks/header.php");
 
     <main>
       <div class="container lox">
-        <form action="" class="w-50">
+        <form action="scripts/vhod-post.php" class="w-50" method="POST">
           <input
             type="email"
+            name="email"
             class="form-control"
             placeholder="Электронная почта"
           />
-          <input type="password" class="form-control" placeholder="Пароль" />
-          <button class="btn btn-outline-dark">Войти</button>
+          <input type="password" name="password" class="form-control" placeholder="Пароль" />
+          <input  class="btn btn-outline-dark" type="submit" value="Войти">
         </form>
       </div>
     </main>
