@@ -58,7 +58,8 @@
 
         <!-- Если куки пользователя не найден, то ссылка на страницу самого пользователя не выйдет -->
         <?php if (isset($_COOKIE['user'])) { ?>
-          <li><a href="profile.php" class="nav-link px-2">Профиль</a></li>
+          <li><a href="profile.php?user=<?php echo $_COOKIE['user']; ?>" 
+          class="nav-link px-2">Профиль</a></li>
         <?php } ?>
 
         <li><a href="#" class="nav-link px-2">FAQs</a></li>
