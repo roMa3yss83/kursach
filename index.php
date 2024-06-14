@@ -51,21 +51,15 @@ include("blocks/header.php");
         </div>
         <div class="col-lg-6">
           <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-            Responsive left-aligned hero with image
+            Зарегестрируйтесь, как компания!
           </h1>
           <p class="lead">
-            Quickly design and customize responsive mobile-first sites with
-            Bootstrap, the world’s most popular front-end open source toolkit,
-            featuring Sass variables and mixins, responsive grid system,
-            extensive prebuilt components, and powerful JavaScript plugins.
+            Если вы ищите сотрудников, то можете зарегестрировать 
+              аккаунт своей компании написав на почту 
           </p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
-              Primary
-            </button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">
-              Default
-            </button>
+            <a class="btn btn-outline-secondary btn-lg px-4" 
+            href="info_reg_kompany.php">Инструкция для регистрации своей компании</a>
           </div>
         </div>
       </div>

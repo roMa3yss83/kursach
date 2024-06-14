@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -61,6 +60,10 @@
           <li><a href="profile.php?user=<?php echo $_COOKIE['user']; ?>" 
           class="nav-link px-2">Профиль</a></li>
         <?php } ?>
+        <?php if (isset($_COOKIE['company'])) { ?>
+          <li><a href="profile_company.php?company=<?php echo $_COOKIE['company']; ?>" 
+          class="nav-link px-2">Моя компания</a></li>
+        <?php } ?>
 
         <li><a href="#" class="nav-link px-2">FAQs</a></li>
         <li><a href="#" class="nav-link px-2">О нас</a></li>
@@ -68,11 +71,11 @@
 
       <div class="col-md-3 text-end">
 
-        <?php if (isset($_COOKIE['user'])) { ?>
+        <?php if ((isset($_COOKIE['user'])) or (isset($_COOKIE['company']))) { ?>
           <a class="btn btn-outline-primary me-2" href="exit.php">Выход</a>
         <?php } ?>
 
-        <?php if (is_null($_COOKIE['user'])) { ?>
+        <?php if ((is_null($_COOKIE['user'])) and (is_null($_COOKIE['company']))) { ?>
           <a class="btn btn-outline-primary me-2" href="vhod.php">Вход</a>
           <a href="registration.php" id="knopka_rega" class="btn btn-warning">Регистрация</a>
         <?php } ?>

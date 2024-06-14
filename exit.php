@@ -1,6 +1,7 @@
 <?php
 
 setcookie("user", "", time() - (60*60*24*15), '/');
+setcookie("company", "", time() - (60*60*24*15), '/');
 
 ?>
 <!DOCTYPE html>
