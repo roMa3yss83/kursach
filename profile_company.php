@@ -6,6 +6,10 @@ $company = $db->prepare("SELECT * FROM `companys` WHERE `id` = ?");
 $company->execute(array($_GET['company']));
 $companyArray = $company->fetch(PDO::FETCH_ASSOC);
 
+$vakansiiKompanii = $db->prepare("SELECT * FROM `vakansii` WHERE `id_company` = ?");
+$vakansiiKompanii->execute(array($_GET['company']));
+$vakansiiKompanii = $vakansiiKompanii->fetchAll(PDO::FETCH_ASSOC);
+
 $site_title = $companyArray['name'];
 $css_file = 'css/profile.css';
 
@@ -27,10 +31,10 @@ include("blocks/header.php");
                 <?php if ($_GET['company'] == $_COOKIE['company']) { ?>
                     <?php if((is_null($companyArray['description'])) 
                     or ($companyArray['description'] == '')) { ?>
-                        <a class="btn btn-success" 
+                        <a class="btn btn-outline-success" 
                         href="add_description.php">Укажите описание вашей компании</a>
                     <?php } else  { ?>
-                        <p><a class="btn btn-success" href="edit_description.php">Обновить описание</a></p>
+                        <p><a class="btn btn-outline-success" href="edit_description.php">Обновить описание</a></p>
                     <?php } ?>
 
                 <?php } ?>
@@ -41,35 +45,35 @@ include("blocks/header.php");
                 <?php } ?></p>
             </div>
         </div>
-        <h2 style="margin-top: 10px;">Вакансии: </h2>
-        
-        <!--
-        <div class="pred_exp">
-            <div class="alert alert-primary" role="alert">
-                <h4>Время работы: 56 месяц</h4>
-                <hr>
-                <p><b>Название организации: ПАО «КАМАЗ»</b></p>
-                <p><b>Краткое описание работы:  </b>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias at ullam eveniet tenetur id dolores magnam perspiciatis sit blanditiis adipisci vitae laborum quaerat cum, tempora maiores ipsum labore aspernatur? Nesciunt.</p>
-            </div>
-        </div>
 
+        <!-- СПИСОК ВАКАНСИЙ -->
+        <h2 style="margin-top: 10px;">Вакансии: </h2>
+        <a class="btn btn-outline-success" href="add_vakansia.php">Добавить вакансию</a>
+        <br><br>
+        <?php foreach ($vakansiiKompanii as $key => $vakansiaKompanii) { ?>
         <div class="pred_exp">
             <div class="alert alert-primary" role="alert">
-                <h4>Время работы: 44 месяц</h4>
+                <h3><?php echo $vakansiaKompanii['title']; ?></h3>
+                <h5><?php echo $vakansiaKompanii['salary']; ?></h5>
                 <hr>
-                <p><b>Название организации: ПАО «КАМАЗ»</b></p>
-                <p><b>Краткое описание работы:  </b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nostrum fugit inventore nesciunt tenetur hic facilis, quod ut? Accusantium voluptas natus quam veniam iure commodi iusto excepturi quasi quidem enim optio repellat dolorum adipisci cum nobis velit ut iste ex, quo maiores. Incidunt, sit enim ab aperiam magni deserunt at nulla quo fuga fugiat quis est nobis illo placeat rerum ducimus ad. Tenetur asperiores cumque dicta placeat aperiam recusandae magni fugiat culpa, iusto rem. Expedita illum soluta distinctio officiis ducimus praesentium, ipsam consequuntur amet voluptatibus dolorem maxime? Maxime rerum vitae a ex optio suscipit praesentium, fugit deserunt, voluptate reprehenderit magnam, voluptas iusto repudiandae earum impedit! Quam veniam reprehenderit iusto ea quis. Modi reiciendis non dolor perspiciatis maiores facere, explicabo autem!</p>
+                    <?php
+                    $nameComp = $db->prepare("SELECT `name` FROM `companys` WHERE `id` = ?");
+                    $nameComp->execute(array($vakansiaKompanii['id_company']));
+                    $nameComp = $nameComp->fetch(PDO::FETCH_ASSOC); ?>
+                <p><h5>Название организации: <?php echo $nameComp['name']; ?></h5> </p>
+                <p><?php echo $vakansiaKompanii['description']; ?></p>
+
+                <?php if($_COOKIE['company'] == $vakansiaKompanii['id_company']) { ?>
+                    <div>
+                        <a class="btn btn-warning" href="edit_vakansia.php?vakansia=<?php echo 
+                        $vakansiaKompanii['id']; ?>">Редактировать</a>
+                        <a class="btn btn-danger" href="delit_vakansia.php?vakansia=<?php echo 
+                        $vakansiaKompanii['id']; ?>">Удалить</a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
-        <div class="pred_exp">
-            <div class="alert alert-primary" role="alert">
-                <h4>Время работы: 23 месяц</h4>
-                <hr>
-                <p><b>Название организации: ПАО «КАМАЗ»</b></p>
-                <p><b>Краткое описание работы:  </b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, ipsum eaque! Aliquam voluptatem ut similique mollitia voluptas esse saepe blanditiis placeat corrupti perferendis aspernatur dicta tenetur consequatur quos, vel praesentium impedit, officiis eligendi est labore doloremque illo, perspiciatis soluta porro. Voluptas quaerat animi, neque doloremque mollitia esse? Ab, possimus officiis.</p>
-            </div>
-        </div>
--->
+        <?php } ?>
     </main>
 
-<?php include("blocks/footer.php") ?>
+<?php include("blocks/footer.php"); ?>
