@@ -1,4 +1,5 @@
 <?php
+session_start();
 $db = new PDO("mysql:host=localhost;port=3306;dbname=bd_vakansii", 
 "root", 
 "");
@@ -16,6 +17,11 @@ $css_file = 'css/profile.css';
 include("blocks/header.php");
 ?>
         <main class="container">
+        <?php if(isset($_SESSION['delit'])) { ?>
+        <div class="alert alert-success">
+            <?php echo $_SESSION['delit'];  ?>
+        </div>
+        <?php } ?>
         <div class="info_djkf d-flex">
             <div class="avatar_info">
                 <img width="250px" src="avatars/<?php echo $companyArray['logo']; ?>">
@@ -65,10 +71,17 @@ include("blocks/header.php");
 
                 <?php if($_COOKIE['company'] == $vakansiaKompanii['id_company']) { ?>
                     <div>
-                        <a class="btn btn-warning" href="edit_vakansia.php?vakansia=<?php echo 
+                        <style>
+                            .knopki-vakansij {
+                                margin-right: 8px;
+                            }
+                        </style>
+                        <a class="knopki-vakansij btn btn-secondary" href="edit_vakansia.php?vakansia=<?php echo 
                         $vakansiaKompanii['id']; ?>">Редактировать</a>
-                        <a class="btn btn-danger" href="delit_vakansia.php?vakansia=<?php echo 
+                        <a class="knopki-vakansij btn btn-danger" href="delit_vakansia.php?vakansia=<?php echo 
                         $vakansiaKompanii['id']; ?>">Удалить</a>
+                        <a class="knopki-vakansij btn btn-primary" href="otkliki.php?vakansia=<?php 
+                        echo $vakansiaKompanii['id']; ?>">Смотреть отклики</a>
                     </div>
                 <?php } ?>
             </div>
@@ -76,4 +89,4 @@ include("blocks/header.php");
         <?php } ?>
     </main>
 
-<?php include("blocks/footer.php"); ?>
+<?php include("blocks/footer.php"); session_destroy(); ?>

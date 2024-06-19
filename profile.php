@@ -81,8 +81,6 @@ $monthNumber = date('n', $timestamp);
                 ?>
                 </p>
                 <!-- Конец блоку "Навыки соискателя" -->
-
-                <p><a class="btn btn-outline-primary me-2" href="">Резюме</a></p>
             </div>
         </div>
         <h2 style="margin-top: 10px;">Предыдущий опыт работы: </h2>

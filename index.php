@@ -5,6 +5,14 @@ $site_title = 'Главная';
 $css_file = 'css/style.css';
 
 include("blocks/header.php");
+
+
+$db = new PDO("mysql:host=localhost;port=3306;dbname=bd_vakansii", 
+    "root", 
+    "");
+$noviVakansii = $db->query("SELECT * FROM `vakansii` LIMIT 6");
+$noviVakansii = $noviVakansii->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <div class="container">
@@ -68,83 +76,40 @@ include("blocks/header.php");
     <br />
 
     <div class="container">
-      <h2>Рекомендованные вакансии</h2>
+      <h2>Новые вакансии на сайте</h2>
+
+      <style>
+        .vakansiaNovi {
+          margin-bottom: 15px;
+        }
+      </style>
       <div class="row">
-        <div class="col-sm-6">
+        <?php foreach ($noviVakansii as $noviVakansia) { ?>
+          <?php
+          $nameComp = $db->prepare("SELECT `name` FROM `companys` WHERE `id` = ?");
+           $nameComp->execute(array($noviVakansia['id_company']));
+           $nameComp = $nameComp->fetch(PDO::FETCH_ASSOC);
+          ?>
+        <div class="col-sm-6 vakansiaNovi">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">
-                Региональный менеджер (ТМ Плитонит)до 131.000 ₽
-              </h5>
-              <p class="card-text">MC-Bauchemie, Тольятти</p>
-              <a href="#" class="btn btn-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">
-                Менеджер по заказам с сайта (удаленно) от 43.000 до 58.000 ₽
+                <?php echo $noviVakansia['title']; ?>  <?php echo $noviVakansia['salary']; ?>
               </h5>
               <p class="card-text">
-                Петрович, Строительный Торговый Дом, Самара
+                <?php
+                   echo $nameComp['name'];
+                ?>
               </p>
-              <a href="#" class="btn btn-primary">Подробнее</a>
+              <a href="info_vakansia.php?vakansia=<?php echo $noviVakansia['id']; ?>" class="btn btn-primary">Подробнее</a>
             </div>
           </div>
         </div>
+        <?php } ?>
       </div>
-      <br />
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">
-                Оператор call - центра от 50.000 до 65.000 ₽
-              </h5>
-              <p class="card-text">МТС, Самара</p>
-              <a href="#" class="btn btn-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Сотрудник склада от 72.949 ₽</h5>
-              <p class="card-text">ВИТА, Самара</p>
-              <a href="#" class="btn btn-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">
-                Менеджер по работе с клиентами от 70.000 ₽
-              </h5>
-              <p class="card-text">ТехноВуд, Самара</p>
-              <a href="#" class="btn btn-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">
-                Работник кухни в Додо Пиццу от 49.000 ₽
-              </h5>
-              <p class="card-text">
-                Додо Пицца (ООО ДОДО ПИЦЦА САМАРА), Самара
-              </p>
-              <a href="#" class="btn btn-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
+
     </div>
 
 <?php
