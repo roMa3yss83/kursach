@@ -54,8 +54,10 @@ include("blocks/header.php");
 
         <!-- СПИСОК ВАКАНСИЙ -->
         <h2 style="margin-top: 10px;">Вакансии: </h2>
-        <a class="btn btn-outline-success" href="add_vakansia.php">Добавить вакансию</a>
-        <br><br>
+        <?php if($_COOKIE['company'] == $_GET['company']) { ?>
+            <a class="btn btn-outline-success" href="add_vakansia.php">Добавить вакансию</a>
+        <?php } ?>
+        <br>
         <?php foreach ($vakansiiKompanii as $key => $vakansiaKompanii) { ?>
         <div class="pred_exp">
             <div class="alert alert-primary" role="alert">
