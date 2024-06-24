@@ -67,7 +67,7 @@
           class="nav-link px-2">Моя компания</a></li>
         <?php } ?>
 
-        <li><a href="#" class="nav-link px-2">FAQs</a></li>
+        <li><a href="faqs.php" class="nav-link px-2">FAQs</a></li>
         <li><a href="about_us.php" class="nav-link px-2">О нас</a></li>
       </ul>
 
