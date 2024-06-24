@@ -21,7 +21,8 @@ if ($_POST["name"] != '') {
 
     // Добавление файлу уникальное имя
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $target_file = $target_dir . str_shuffle($permitted_chars) . "." . pathinfo($_FILES['avatar']['name'])['extension'];
+    $new_name = str_shuffle($permitted_chars);
+    $target_file = $target_dir . $new_name . "." . pathinfo($_FILES['avatar']['name'])['extension'];
     
     $imageFileType = pathinfo($target_file)['extension'];
     
@@ -31,7 +32,7 @@ if ($_POST["name"] != '') {
       if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg") {
           // Попытка загрузить файл
           if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
-              $avatar = str_shuffle($permitted_chars) . "." . pathinfo($_FILES['avatar']['name'])['extension'];
+              $avatar = $new_name . "." . pathinfo($_FILES['avatar']['name'])['extension'];
           }
       }
       else {

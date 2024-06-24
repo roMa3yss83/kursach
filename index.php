@@ -13,6 +13,11 @@ $db = new PDO("mysql:host=localhost;port=3306;dbname=bd_vakansii",
 $noviVakansii = $db->query("SELECT * FROM `vakansii` LIMIT 6");
 $noviVakansii = $noviVakansii->fetchAll(PDO::FETCH_ASSOC);
 
+
+if (isset($_POST['nameVakansia'])) {
+  header('Location: ' . 'vakansii.php?name=' . $_POST['nameVakansia']);
+}
+
 ?>
 
 <div class="container">
@@ -28,19 +33,21 @@ $noviVakansii = $noviVakansii->fetchAll(PDO::FETCH_ASSOC);
       <div class="container">
         <div id="main_main">
           <h1 id="zagolovok"><b>Работа найдётся для каждого</b></h1>
-          <div id="pole_main">
+          <!-- <div id="pole_main"> -->
+            <form id="pole_main" method="post" action="">
+
+          
             <input
               type="text"
               class="form-control"
+              name="nameVakansia"
               id="firstName"
               placeholder="Введите интересующую вас вакансию"
               value=""
-              required=""
             />
-            <button type="button" class="btn btn-danger" id="knopka_main">
-              Поиск
-            </button>
-          </div>
+            <input  class="btn btn-danger" id="knopka_main" type="submit" value="Поиск">
+            </form>
+          <!-- </div> -->
         </div>
       </div>
     </div>

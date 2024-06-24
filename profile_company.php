@@ -52,12 +52,31 @@ include("blocks/header.php");
             </div>
         </div>
 
+        <div>
+            <br>
+            <style>
+                .logo-update {
+                    display: flex;
+                    max-width: 700px;
+                }
+                .logo-knopka {
+                    margin-left: 15px;
+                }
+            </style>
+            <form action="scripts/update-logo.php" method="POST" enctype="multipart/form-data">
+            <div class="logo-update">
+                <input class="form-control" name="avatar" type="file" id="formFile" />
+                <input class="logo-knopka btn btn-outline-dark" type="submit" value="Обновить логотип">
+            </div>
+            </form>
+        </div>
+
         <!-- СПИСОК ВАКАНСИЙ -->
         <h2 style="margin-top: 10px;">Вакансии: </h2>
         <?php if($_COOKIE['company'] == $_GET['company']) { ?>
             <a class="btn btn-outline-success" href="add_vakansia.php">Добавить вакансию</a>
         <?php } ?>
-        <br>
+        <br><br>
         <?php foreach ($vakansiiKompanii as $key => $vakansiaKompanii) { ?>
         <div class="pred_exp">
             <div class="alert alert-primary" role="alert">

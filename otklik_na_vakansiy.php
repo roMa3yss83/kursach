@@ -4,8 +4,8 @@ $db = new PDO("mysql:host=localhost;port=3306;dbname=bd_vakansii",
 "");
 session_start();
 
-$proverka = $db->prepare("SELECT `id` FROM `otkliki` WHERE `id_user` = ?");
-$proverka->execute(array($_COOKIE['user']));
+$proverka = $db->prepare("SELECT `id` FROM `otkliki` WHERE `id_user` = ? AND `id_vakansia` = ?");
+$proverka->execute(array($_COOKIE['user'], $_GET['vakansia']));
 $proverka = $proverka->fetch(PDO::FETCH_ASSOC);
 
 if ($proverka == null) {
@@ -19,4 +19,3 @@ else {
   $_SESSION['success'] = 'Вы уже откликнулись на эту вакансию';
   header('Location: '. 'http://kursach/info_vakansia.php?vakansia=' . $_GET['vakansia']);
 }
-?>

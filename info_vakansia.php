@@ -34,7 +34,9 @@ include("blocks/header.php")
     </p>
     <?php if (isset($_COOKIE['user'])) { ?>
         <div>
-            <a class="btn btn-outline-success" href="otklik_na_vakansiy.php?vakansia=<?php echo $_GET['vakansia']; ?>">Откликнуться</a> <a class="btn btn-outline-danger" href="">Пожаловаться</a>
+            <a class="btn btn-outline-success" 
+            href="otklik_na_vakansiy.php?vakansia=<?php echo $_GET['vakansia']; ?>">Откликнуться</a> 
+            <a class="btn btn-outline-danger" href="">Пожаловаться</a>
         </div>
     <?php } else { ?>
         <p class="error_message">Зарегестрируйтесь или войдите в аккаунт, чтобы откликнуться или пожаловаться на эту вакансию!</p>
