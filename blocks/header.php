@@ -56,7 +56,6 @@
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="/" class="nav-link px-2">Главная</a></li>
-        <li><a href="#" class="nav-link px-2">Новости</a></li>
 
         <!-- Если куки пользователя не найден, то ссылка на страницу самого пользователя не выйдет -->
         <?php if (isset($_COOKIE['user'])) { ?>
@@ -69,7 +68,7 @@
         <?php } ?>
 
         <li><a href="#" class="nav-link px-2">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2">О нас</a></li>
+        <li><a href="about_us.php" class="nav-link px-2">О нас</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
